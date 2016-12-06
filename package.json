@@ -1,0 +1,16 @@
+{
+  "name": "winningadventofcode",
+  "version": "1.0.0",
+  "author": "Alex Sears <me@alexsears.com> (http://alexsears.com)",
+  "license": "MIT",
+  "scripts": {
+    "serve": "webpack-dev-server --hot --inline --content-base ./src --open"
+  },
+  "devDependencies": {
+    "elm-hot-loader": "^0.5.3",
+    "elm-webpack-loader": "^3.1.0",
+    "html-webpack-plugin": "^2.24.1",
+    "webpack": "2.1.0-beta.27",
+    "webpack-dev-server": "2.1.0-beta.12"
+  }
+}
