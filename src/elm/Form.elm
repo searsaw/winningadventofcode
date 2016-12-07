@@ -56,15 +56,15 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    form []
+    form [ onSubmit FormSubmitted ]
         [ label [ for "token" ] [ text "Session token" ]
         , input [ id "token", value model.sessionToken, onInput UpdateToken ] []
-        , label [ for "leaderboard" ] [ text "Leaderboard Identification" ]
+        , label [ for "leaderboard" ] [ text "Leaderboard ID" ]
         , input [ id "leaderboard", value model.leaderboard, onInput UpdateLeaderboard ] []
         , label [ for "year" ] [ text "Year" ]
         , select [ id "year", value model.year, onInput UpdateYear ]
             [ option [ value "2016" ] [ text "2016" ]
             , option [ value "2015" ] [ text "2015" ]
             ]
-        , button [ type_ "submit", onSubmit FormSubmitted ] [ text "Find the winners!" ]
+        , button [ type_ "submit" ] [ text "Find the winners!" ]
         ]
