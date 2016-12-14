@@ -34,20 +34,20 @@ init =
 -- UPDATE
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : Msg -> Model -> ( Model, Cmd Msg, Maybe ( String, String ) )
 update msg model =
     case msg of
         UpdateToken token ->
-            ( { model | sessionToken = token }, Cmd.none )
+            ( { model | sessionToken = token }, Cmd.none, Nothing )
 
         UpdateLeaderboard leaderboard ->
-            ( { model | leaderboard = leaderboard }, Cmd.none )
+            ( { model | leaderboard = leaderboard }, Cmd.none, Nothing )
 
         UpdateYear year ->
-            ( { model | year = year }, Cmd.none )
+            ( { model | year = year }, Cmd.none, Nothing )
 
         FormSubmitted ->
-            ( model, Cmd.none )
+            ( model, Cmd.none, Just ( getRequestUrl model, model.sessionToken ) )
 
 
 
@@ -68,3 +68,12 @@ view model =
             ]
         , button [ type_ "submit" ] [ text "Find the winners!" ]
         ]
+
+
+
+-- REQUEST
+
+
+getRequestUrl : Model -> String
+getRequestUrl model =
+    "http://adventofcode.com/" ++ model.year ++ "/leaderboard/private/view/" ++ model.leaderboard ++ ".json"
