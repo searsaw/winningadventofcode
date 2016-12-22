@@ -117,6 +117,11 @@ getLeaderBoardData url token =
 
 leaderboardDecoder : Decoder (List ( String, Member ))
 leaderboardDecoder =
+    Json.Decode.at [ "members" ] membersDecoder
+
+
+membersDecoder : Decoder (List ( String, Member ))
+membersDecoder =
     Json.Decode.keyValuePairs memberDecoder
 
 
